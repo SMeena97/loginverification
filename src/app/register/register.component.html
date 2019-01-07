@@ -1,0 +1,53 @@
+<h1 style="margin: 0">Register</h1>
+<form>
+    
+    <div  [class.has-error]="firstname.invalid && firstname.touched"
+    [class.has-success]="firstname.valid">
+    <label for="firstname" class="control-label">First Name:</label><br />
+    <input type="text" required name="firstname" [(ngModel)]="input.firstname" 
+    class="form-control" #firstname="ngModel"/><br />
+    <span class="help-block" *ngIf="firstname.invalid && firstname.touched">
+            Firstname is required
+        </span>
+    
+    </div>
+
+   <div  [class.has-error]="lastname.invalid && lastname.touched"
+    [class.has-success]="lastname.valid">
+    <label for="lastname" class="control-label">Last Name:</label><br />
+    <input type="text" required name="lastname" [(ngModel)]="input.lastname" 
+    class="form-control" #lastname="ngModel"/><br />
+    <span class="help-block" *ngIf="lastname.invalid && lastname.touched">
+            Lastname is required
+        </span>
+    
+    </div>
+    
+    <div  [class.has-error]="email.invalid && email.touched">
+    <label for="email" class="control-label">Email:</label><br />
+    <input required [email]="input.email!==''" type="text" class="form-control" name="email" [(ngModel)]="input.email" 
+    #email="ngModel"/><br />
+    <span class="help-block" *ngIf="email.errors?.required && email.touched">
+        Email is required
+    </span>
+    <span class="help-block" *ngIf="email.errors?.email && email.touched">
+        Email is Invaild
+    </span>
+    </div>
+
+    <div  [class.has-error]="password.invalid && password.touched"
+    [class.has-success]="password.valid">
+    <label for="password" class="control-label">Password:</label><br />
+    <input type="password" required name="password" [(ngModel)]="input.password" 
+    class="form-control" #password="ngModel"/><br />
+    <span class="help-block" *ngIf="password.invalid && password.touched">
+            Passsword is required
+        </span>
+    
+    </div>
+    
+    <button type="button" (click)="register()">Register</button>
+</form>
+<p>
+    <a [routerLink]="['/login']">Login</a>
+</p>
